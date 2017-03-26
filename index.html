@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>The Major Cities of Oregon</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--meta data for sharing links on Facebook-->
+    <meta property="og:title" content="Walkability of Corvallis" />
+    <meta property="og:url" content="http://cdn.rawgit.com/ScottWhitson/WalkabilityCorvallis/master/index.html" />
+    <meta property="og:description" content="This is my storymap on walkability in Corvallis" />
+    <meta property="og:image" content="img/thumbnail.png" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
+
+    <!--animation-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+    <!--facebook and info icons-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!--use a better font for this web map-->
+    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+
+
+    <link rel="stylesheet" type="text/css" href="css/storymap.css">
+    <!--add favicon for the web page-->
+    <link rel="shortcut icon" href="img/OSU_cv2.ico" type="image/x-icon">
+
+    <!--add required libraries-->
+    <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
+
+    <!--story map plugin-->
+    <script src="js/storymap.js"></script>
+
+    <!-- bing map -->
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Promise"></script>
+    <script src="http://gmaclennan.github.io/leaflet-bing-layer/leaflet-bing-layer.js"></script>
+
+    <!-- mini globle map -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.19/topojson.min.js"></script>
+    <script src="js/globeminimap.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6 col-md-4 main">
+            <section data-scene="overview">
+                <video autoplay loop muted class="background-fullscreen-setting" playsinline autoplay muted loop>
+                    <source src="assets/Corvallis.mp4" type="video/mp4">
+
+                </video>
+                <!--<iframe class="background-img-setting text-responsive" src="https://www.youtube.com/embed/W0LHTWG-UmQ?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&playlist=W0LHTWG-UmQ" frameborder="0" allowfullscreen></iframe>-->
+                <div class= "background-fullscreen-setting text-responsive text-center" >
+                    <h2><large style="color: orangered">This Web Map introduces the walkability of Corvallis using a storytelling map library.</large></h2>
+                </div>
+            </section>
+
+            <section data-scene="scene1">
+                <h2>Network Analysis Of Corvallis Sidewalks</h2>
+                <h3>Where can Corvallis improve sidewalks to allow accessibility for all peoples to destinations essential for a healthy lifestyle?</h3>
+                <br>
+                <p>For analysis of accessibility on sidewalks, I digitized sidewalks for a portion of Corvallis. Connectivity is the key for building network datasets, so I connected sidewalks across streets only where ADA ramps are located. This layer came from the City of Corvallis. </p>
+                <p>Setting up parameters for the network to calculate the walking rate per minutes proved to be the most difficult part, but with this, I can select multiple stops and if ADA ramped sidewalks are connecting the stops, a route is generated. The walking rate set up in the parmaeter was slowed down by 10% to account for all members of the community including senior citizens, those with disabilities, or someone that prefers to walk slow.</p>
+                <p>These routes in the image below show common stops one may take while walking. The purple route starts at Fred Meyers for some grocery shopping and stops at Block 15; this should take over an hour for anyone walking. The green route starts at Corvallis High School, stops at a house in a near neighborhood, and ends at the Benton Public Library. The yellow route goes from OSU Book Store to Monroe&Kings Bus stop. Finally the longest working route starts in the Elmwood neighborhood, stops at Zion Lutheran School, a couple different neighborhoods, ending in Downtown. This route shows the connectivity of Corvallis the most and a really long walk.</p>
+                <img src="img/RouteTimes.png" class="img-responsive" alt="responsive image" alt-text="Routes">
+                <p>A future goal for this project includes finishing digitizing all of Corvallis sidewalks including south town, make edits to the existing network, and creating a working interactive network.</p>
+            </section>
+
+            <section data-scene="scene2">
+                <h3>Which service areas (points of interest that ensure a healthy lifestyle) are lacking in accessibility relative to the surrounding area?</h3>
+                <br>
+                <p>I performed a service area analysis from a filter of the City of Corvallis' places shapefile. My service areas included schools, parks, and grocery stores.</p>
+                <img src="img/1_serviceanalysis.png" class="img-responsive" alt="responsive image" alt-text="ServiceAreas">
+            </section>
+
+            <section data-scene="scene3">
+                <h2>Corvallis At Night</h2>
+                <h3>How well are you able to see while walking in Corvallis after dark?</h3>
+                <br>
+                <p>Adding streetlights from the City of Corvallis and running a kernal density determined the brightness of Corvallis after dark.</p>
+                <img src="img/corvallisnight.png" class="img-responsive" alt="responsive image" alt-text="CorvallisNight">
+            </section>
+
+            <section data-scene="end">
+                    <video autoplay loop muted class="background-fullscreen-setting" playsinline autoplay muted loop>
+                        <source src="assets/End_Corvallis.mp4" type="video/mp4">
+                    </video>
+                    <br/>
+                    <h3 class="">Thanks for watching!!!</h3>
+                    <h3><small style="color: rgba(169, 169, 169, 0.8)">Download Storymap.js from http://github.com/jakobzhao/storymap</small></h3>
+            </section>
+        </div>
+        <!--add an arrow for scrolling down the texts-->
+        <i class="animated zoomIn infinite glyphicon glyphicon-menu-down arrow-down"></i>
+        <!--map div-->
+        <div id="map" class="col-sm-6 col-md-8 sidebar"></div>
+    </div>
+
+    <dl>
+        <dt>
+            <!--facebook icon-->
+            <a class="fa fa-facebook-square btn" href="https://facebook.com/sharer.php?u=http://cdn.rawgit.com/ScottWhitson/WalkabilityCorvallis/master/index.html" target="_blank"></a></dt>
+        <dt>
+            <!--info icon-->
+            <i class="fa fa-info-circle btn" style="top:50px" data-toggle="modal" data-target="#info-modal"></i></dt>
+    </dl>
+    <ul class="navbar text-center"></ul>
+    <div id="loading">
+        <i class="animated zoomIn infinite glyphicon glyphicon-globe"></i>
+    </div>
+
+    <!--the info page-->
+    <div class="modal fade" id="info-modal" role="dialog">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">About</h4>
+                </div>
+                <div class="modal-body">
+                    <p>This is a web map of major cities in Oregon. It is mainly made as a demo for a course GEOG 371: Web Mapping provided by Oregon State University. The story map library is derived from the storymap plugin for leaflet at <a>http://atlefren.github.io/storymap/</a>, and its functionality relies on both leaflet and Boostrap.</p>
+                    <p><b>storymap.js</b> | Released Date: 02/20/2017 | Version: 2.1 | MIT License </p>
+                    <p><b>Author: Bo Zhao</b> | College of Earth, Ocean, Atmospheric Science | Oregon State University </p>
+                    <p>This story map uses geospatial data from mapbox, Google Earth Engine, Microsoft Bing map, Open Street Maps and Oregon Explorer.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- main javascript -->
+<script type="text/javascript">
+
+    /**
+     * Created by jakob on 2/22/2017.
+     */
+        // Create Legend Contents in html format
+    var county_legend ='<i style="background: black; opacity: 0.5"></i><p><b>Counties</b></p>';
+    var corvallis_admin_legend = '<i style="background: orange; opacity: 0.5"></i><p><b>Corvallis</b></p>';
+    var forest_legend = '<i style="background: green; opacity: 0.5"></i><p><b>Forest</b></p>';
+
+    // For each layer, the first variable is the layer, the second is the legend. The layer variable can be any kinds of layers that leaflet.js supports.
+    // var layers = {
+    //      'layer1': [layer1, legend1]
+    //      'layer2': [layer2, legend2]
+    //      ...
+    // }
+
+    var layers = {
+        'layer 1': [ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpcms2YWsyMzAwMmtmbG5icTFxZ3ZkdncifQ.P9MBej1xacybKcDN_jehvw', {id: 'mapbox.dark'})],
+        'bing' : [L.tileLayer.bing('AuhiCJHlGzhg93IqUH_oCpl_-ZUrIE6SPftlyGYUvr9Amx5nzA-WqGcPquyFZl4L')],
+        'corvallis admin': [L.geoJson.ajax('http://www.mapio.us/geoserver/ceoas/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ceoas:admin&outputFormat=application%2Fjson',          {
+            color: 'orange',
+            weight: 5}), corvallis_admin_legend],
+        'sidewalks': [ L.geoJson.ajax('assets/sidewalks.geojson',  {
+            color: '#ff6b2a',
+            weight: 2,
+            opacity: 0.6}), '<i style="background: #ff6b2a; opacity: 1"></i><p><b>Sidewalks</b></p>'],
+        'streetlights': [ L.geoJson.ajax('assets/streetlights.geojson',  {
+            color: '#ff3',
+            weight: 2,
+            opacity: 0.5
+        }),'<i style="background: #ff3; opacity: 1"></i><p><b>Streetlights</b></p>'],
+
+        'service': [ L.geoJson.ajax('assets/service.geojson',  {
+            color: '#195db1',
+            weight: 6,
+            opacity: 0.5
+
+        }),'<i style="background: #195db1; opacity: 1"></i><p><b>Service Areas</b></p>']
+
+
+
+    };
+
+    var scenes = {
+        overview: {lat: 44, lng: -123.5, zoom: 7, position: 'fullpage'},
+        scene1: {lat: 44.57676, lng: -123.29028, zoom: 13.5, layers: ['layer 1','sidewalks']},
+        scene2: {lat: 44.57376, lng: -123.28419, zoom: 16, layers: ['layer 1','service','sidewalks']},
+        scene3: {lat: 44.57376, lng: -123.29119, zoom: 14, layers: ['layer 1','streetlights']},
+        end: {lat: 44, lng: -123.5, zoom: 7, position: 'fullpage'}
+    };
+
+    $('.main').storymap({
+        scenes: scenes,
+        layers: layers,
+        legend: true, // if you do not want a legend feature, you can simply not define the createLegend function.
+        scale: false,
+        navbar: true,
+
+        createMap: function () {
+            // create a map in the "map" div, set the view to a given place and zoom
+            var map = L.map('map', {zoomControl: false, scrollWheelZoom: false});
+
+            // add an base map, which can be either OSM, mapbox, tilelayer, wmslayer or those designed by yourself.
+            L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpcms2YWsyMzAwMmtmbG5icTFxZ3ZkdncifQ.P9MBej1xacybKcDN_jehvw', {
+                maxZoom: 18,
+                attribution: '<a href="http://ceoas.oregonstate.edu/profile/zhao/" target="_blank">Bo Zhao</a>',
+                id: 'mapbox.light' // ,detectRetina: true
+            }).addTo(map);
+
+
+            // create a mini globe as the overview map control.
+            var miniMap = new L.Control.GlobeMiniMap({
+                marker:'orangered',
+                position: 'bottomright'
+            }).addTo(map);
+
+            // hidden the credits, but show in the about page.
+            $(".leaflet-control-attribution").css("display", "none");
+
+            return map;
+        }
+    });
+
+
+
+</script>
+</body>
+</html>
